@@ -1,8 +1,11 @@
 import { useState, useCallback,useReducer } from 'react';
 import {cloneDeep } from 'lodash';
 import { Button, Input, Modal } from 'antd';
-const { Search } = Input;
+import UploadCxt from '../upload'
 import css from './index.less';
+
+const { Search } = Input;
+
 
 const conf = [
     {
@@ -66,7 +69,7 @@ export default () => {
                 title={modal.title}
                 getContainer={false}
                 onCancel={cancleModal}>
-                {modal.title}
+                <UploadCxt/>
             </Modal>
         </div>
     )
