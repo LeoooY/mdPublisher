@@ -1,0 +1,1 @@
+{"ast":null,"code":"import request from 'umi-request';\nexport default request;","map":{"version":3,"sources":["/home/leoy/LY/code/mdPublisher/utils/request.js"],"names":["request"],"mappings":"AAAA,OAAOA,OAAP,MAAoB,aAApB;AACA,eAAeA,OAAf","sourcesContent":["import request from 'umi-request';\nexport default request;"]},"metadata":{},"sourceType":"module"}
