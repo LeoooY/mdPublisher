@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import UserInfo from './subcomponents/userinfo';
+
 import style from './index.less';
 
 function Sider(props) {
@@ -8,7 +10,9 @@ function Sider(props) {
     useEffect(() => {      
     });
     return (
-      <div className={style.Sider}>Sider</div>
+      <div className={style.Sider}>
+          <UserInfo/>
+      </div>
     )
 }
 
