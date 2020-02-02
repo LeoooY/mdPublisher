@@ -69,7 +69,9 @@ export default () => {
                 title={modal.title}
                 getContainer={false}
                 onCancel={cancleModal}>
+                
                 <UploadCxt/>
+                                
             </Modal>
         </div>
     )
