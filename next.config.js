@@ -76,7 +76,8 @@ module.exports = withCss(withLess({
         config.resolve.alias = {
             ...config.resolve.alias,
             "@utils": path.resolve(__dirname, "./utils"),
-            "@globalTheme": path.resolve(__dirname, "./utils/globalTheme.less")
+            "@globalTheme": path.resolve(__dirname, "./utils/globalTheme.less"),
+            "@customHooks": path.resolve(__dirname, "./customHooks")
         }
         return config
     },
