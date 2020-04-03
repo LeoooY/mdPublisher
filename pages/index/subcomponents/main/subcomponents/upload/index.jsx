@@ -5,7 +5,8 @@ import request from "@utils/request";
 export default (props) => {
     const uploadProps = {
         name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        // action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        action: 'http://localhost:3000/api/upload',
         headers: {
             authorization: 'authorization-text',
         },        
