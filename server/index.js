@@ -2,31 +2,46 @@ const Koa = require('koa')
 const next = require('next')
 const Router = require('koa-router')
 const multer = require('@koa/multer');
-const moment=require('moment')
+const moment = require('moment')
+const {
+    connDB,
+    closeDB,
+    insertDB,
+    updateDB,
+    findDB,
+}=require('./sqlite3/db')
+/* const cors = require('koa2-cors') */
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/uploads/')
+        cb(null, 'server/upload/')
     },
     filename: function (req, file, cb) {
-        const fileName=file.originalname.replace('.md','')
-        const time=moment().format('YYYY-MM-DD')
+        const fileName = file.originalname.replace('.md', '')
+        const time = moment().format('YYYY-MM-DD')
         cb(null, `${fileName}_${time}.md`)
     }
 })
-// dest: '/uploads/',
-const upload = multer({ storage }); // note you can pass `multer` options here
+
+/* dest: '/uploads/' */
+/* note you can pass `multer` options here */
+const upload = multer({ storage }); 
+
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-app.prepare().then(() => {
+app.prepare().then(async () => {
+    const db=await connDB()
+    if(!db){
+        console.log(`SQLite 异常，请检查server代码和配置！`)
+        return;
+    }
     const koaApp = new Koa()
     const router = new Router()
 
-    // add a route for uploading single files
     router.post(
         '/api/upload',
         upload.single('mdfile'),
@@ -40,7 +55,6 @@ app.prepare().then(() => {
         }
     );
 
-    // add a route for uploading single files
     router.post(
         '/api/test',
         ctx => {
@@ -81,6 +95,14 @@ app.prepare().then(() => {
         /* 路由 */
         .use(router.routes())
         .use(router.allowedMethods())
+        
+        /* 处理跨域 */
+        /* .use(cors({
+            origin: "*",
+            credentials: true,
+            allowMethods: ['GET', 'POST'],
+            allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+        })) */
 
     koaApp.listen(port, () => {
         console.log(`> Ready on http://localhost:${port}`)
