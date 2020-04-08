@@ -6719,6 +6719,11 @@ sqlite3@^4.1.1:
     node-pre-gyp "^0.11.0"
     request "^2.87.0"
 
+sqlite@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.npm.taobao.org/sqlite/download/sqlite-4.0.5.tgz#5b902bfc61999f77c8bb93137bc16da23b67fd7c"
+  integrity sha1-W5Ar/GGZn3fIu5MTe8Ftojtn/Xw=
+
 sshpk@^1.7.0:
   version "1.16.1"
   resolved "https://registry.npm.taobao.org/sshpk/download/sshpk-1.16.1.tgz#fb661c0bef29b39db40769ee39fa70093d6f6877"
