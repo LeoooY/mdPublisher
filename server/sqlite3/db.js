@@ -14,14 +14,14 @@ const connDB = async () => {
         const db = await open({
             filename: dbpath,
             driver: sqlite3.Database
-        })        
+        })
         return db;
     } catch (err) {
         return;
     }
 }
 
-const closeDB = (db) => {
+const closeDB = async (db) => {
     try {
         await db.close()
         return 1;
